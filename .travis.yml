@@ -1,0 +1,13 @@
+language: erlang
+otp_release:
+  - 18.1
+  - 17.4
+  - R16B03
+script:
+  - make dialyzer
+  - make xref
+  - make
+  - make test
+notifications:
+  email: christopher.meiklejohn@gmail.com
+sudo: false
