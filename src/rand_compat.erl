@@ -22,12 +22,19 @@
 -author("Christopher S. Meiklejohn <christopher.meiklejohn@gmail.com>").
 
 -export([seed/3,
+         uniform/0,
          uniform/1]).
 
 seed(A,B,C) ->
     case have_rand() of
         true  -> rand:seed(exsplus, {A,B,C});
         false -> random:seed(A,B,C)
+    end.
+
+uniform() ->
+    case have_rand() of
+        true  -> rand:uniform();
+        false -> random:uniform()
     end.
 
 uniform(N) ->
