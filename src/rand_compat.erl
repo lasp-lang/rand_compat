@@ -27,13 +27,13 @@
 seed(A,B,C) ->
     case have_rand() of
         true  -> rand:seed(exsplus, {A,B,C});
-        false -> randome:seed(A,B,C)
+        false -> random:seed(A,B,C)
     end.
 
 uniform(N) ->
     case have_rand() of
         true  -> rand:uniform(N);
-        false -> randome:uniform(N)
+        false -> random:uniform(N)
     end.
 
 %% random module is deprecated since releases 19 (ERTS >= 8.0)
