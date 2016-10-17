@@ -22,8 +22,15 @@
 -author("Christopher S. Meiklejohn <christopher.meiklejohn@gmail.com>").
 
 -export([seed/3,
+         seed/1,
          uniform/0,
          uniform/1]).
+
+seed(SValue) ->
+    case have_rand() of
+        true  -> rand:seed(exsplus, SValue);
+        false -> (fun random:seed/1)(SValue)
+    end.
 
 seed(A,B,C) ->
     case have_rand() of
