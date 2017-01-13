@@ -8,5 +8,9 @@
                   stdlib
                  ]},
   {modules, []},
-  {env, []}
+  {env, []},
+
+  {maintainers, ["Chris Meiklejohn"]},
+  {licenses, ["Apache 2.0"]},
+  {links, [{"Github", "https://github.com/lasp-lang/rand_compat"}]}
  ]}.
