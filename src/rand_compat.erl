@@ -50,6 +50,6 @@ uniform(N) ->
         false -> (fun random:uniform/1)(N)
     end.
 
-%% random module is deprecated since releases 19 (ERTS >= 8.0)
+%% random module is deprecated since releases 19 (ERTS >= 8.0). It exists since release 18.
 have_rand() ->
-    (code:which(rand) /= non_existing).
+    list_to_integer(erlang:system_info(otp_release)) > 17.
