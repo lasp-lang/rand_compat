@@ -26,30 +26,34 @@
          uniform/0,
          uniform/1]).
 
+-ifdef(rand_module).
 seed(SValue) ->
-    case have_rand() of
-        true  -> rand:seed(exsplus, SValue);
-        false -> (fun random:seed/1)(SValue)
-    end.
+    rand:seed(exsplus, SValue).
+-else.
+seed(SValue) ->
+    random:seed(SValue).
+-endif.
 
+-ifdef(rand_module).
 seed(A,B,C) ->
-    case have_rand() of
-        true  -> rand:seed(exsplus, {A,B,C});
-        false -> (fun random:seed/3)(A,B,C)
-    end.
+    rand:seed(exsplus, {A,B,C}).
+-else.
+seed(A,B,C) ->
+    random:seed(A,B,C).
+-endif.
 
+-ifdef(rand_module).
 uniform() ->
-    case have_rand() of
-        true  -> rand:uniform();
-        false -> (fun random:uniform/0)()
-    end.
+    rand:uniform().
+-else.
+uniform() ->
+    random:uniform().
+-endif.
 
+-ifdef(rand_module).
 uniform(N) ->
-    case have_rand() of
-        true  -> rand:uniform(N);
-        false -> (fun random:uniform/1)(N)
-    end.
-
-%% random module is deprecated since releases 19 (ERTS >= 8.0). It exists since release 18.
-have_rand() ->
-    list_to_integer(erlang:system_info(otp_release)) > 17.
+    rand:uniform(N).
+-else.
+uniform(N) ->
+    random:uniform(N).
+-endif.
