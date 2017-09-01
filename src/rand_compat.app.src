@@ -1,6 +1,6 @@
 {application,rand_compat,
              [{description,"Erlang 18 random compatibility library."},
-              {vsn,"0.0.2"},
+              {vsn,"0.0.3"},
               {registered,[]},
               {applications,[kernel,stdlib]},
               {modules,[]},
