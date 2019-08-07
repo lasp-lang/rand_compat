@@ -24,7 +24,9 @@
 -export([seed/3,
          seed/1,
          uniform/0,
-         uniform/1]).
+         uniform/1,
+         uniform_s/1,
+         uniform_s/2]).
 
 -ifdef(rand_module).
 seed(SValue) ->
@@ -56,4 +58,20 @@ uniform(N) ->
 -else.
 uniform(N) ->
     random:uniform(N).
+-endif.
+
+-ifdef(rand_module).
+uniform_s(State) ->
+    rand:uniform_s(State).
+-else.
+uniform_s(State0) ->
+    random:uniform_s(State0).
+-endif.
+
+-ifdef(rand_module).
+uniform_s(N, State) ->
+    rand:uniform_s(N, State).
+-else.
+uniform_s(N, State0) ->
+    random:uniform_s(N, State0).
 -endif.
